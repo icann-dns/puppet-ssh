@@ -5,6 +5,7 @@ class ssh::server (
   Boolean $password_authentication           = true,
   Boolean $x11_forwading                     = true,
   Boolean $print_mod                         = false,
+  String  $permitrootlogin                   = 'no',
   Optional[String] $package         = $::ssh::params::server_package,
 ) inherits ssh::params {
 
@@ -31,6 +32,7 @@ class ssh::server (
       "set PasswordAuthentication ${_password_authentication}",
       "set X11Forwarding ${_x11_forwading}",
       "set PrintMotd ${_print_mod}",
+      "set PermitRootLogin ${permitrootlogin}",
     ],
   }
 }
